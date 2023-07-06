@@ -28,4 +28,12 @@ public class ResponseRepository {
     public List<Weather> getWeatherList() {
         return StreamSupport.stream(weatherRepository.findAll().spliterator(), false).toList();
     }
+
+    public List<Weather> getGenreList() {
+        return null;
+    }
+
+    public Weather deleteGenreById(int i) {
+        return null;
+    }
 }

@@ -42,6 +42,18 @@ class ResponseRepositoryTest {
         assertThat(genres.get(0).getMessage()).isEqualTo("Suns out! Time for some pop to brighten your day even more.");
     }
 
+    @Test
+    void shouldDeleteGenre() {
+        List<Weather> genreList = repo.getGenreList();
+        assertThat(genreList).isNotNull();
+
+        Weather weather = repo.deleteGenreById(1);
+
+        List<Weather> genreList2 = repo.getGenreList();
+        assertThat(genreList2).isNotNull();
+        assertThat(genreList2.size()).isEqualTo(genreList.size() - 1);
+    }
+
 
 
 }
