@@ -10,7 +10,7 @@ type MoodyCardProps = {
 }
 
 const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes, id} : MoodyCardProps) => {
-  const [upVotes, setUpVotes] = useState(genre_upvotes);
+  const [upVotes, setUpVotes] = useState(0);
 
   const handleUpvote = async () => {
     try {
@@ -46,8 +46,18 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
     }
   }
 
-  const handleDelete = () => {
-    
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/genre/${id}`, {
+        method: 'DELETE'
+      })
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
 
   useEffect(() => {
@@ -71,7 +81,7 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
               <p className='flex-grow-1 fs-2 m-0'>{upVotes}</p>
               <button onClick={handleDownvote} className='btn btn-secondary flex-grow-1'>DownVote</button>
               </div>
-              <button className='btn btn-danger'>Delete</button>
+              <button onClick={handleDelete} className='btn btn-danger'>Delete</button>
           </div>
         </div>
       </div>
