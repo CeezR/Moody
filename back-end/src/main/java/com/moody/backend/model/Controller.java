@@ -1,6 +1,7 @@
 package com.moody.backend.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -58,5 +59,14 @@ public class Controller {
         }
         repository.downVoteGenre(genre.getId());
         return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping(path = "genre/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseEntity<Void> deleteCart(@PathVariable Long id) {
+        try {
+            repository.deleteGenreById(id);
+        } catch (EmptyResultDataAccessException ignored) {}
+
+        return ResponseEntity.noContent().build();
     }
 }

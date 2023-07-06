@@ -49,6 +49,6 @@ public class ControllerTest {
     void shouldDeleteGenere(){
         String uri = "http://localhost:%s/api/genre/1".formatted(port);
         ResponseEntity<ResponseDto> exchange = restTemplate.exchange(uri, HttpMethod.DELETE, HttpEntity.EMPTY, ResponseDto.class);
-        assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
 }
