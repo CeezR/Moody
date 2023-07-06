@@ -33,6 +33,10 @@ public class ResponseRepository {
         return StreamSupport.stream(genreRepository.findAll().spliterator(), false).toList();
     }
 
+    public Genre getGenre(Long id) {
+        return genreRepository.findById(id).orElse(null);
+    }
+
     public void deleteGenreById(Long i) {
         genreRepository.deleteById(i);
     }

@@ -33,7 +33,7 @@ public class ControllerTest {
 
     @Test
     void shouldUpVoteGenere(){
-        String uri = "http://localhost:%s/api/genre/upVote".formatted(port);
+        String uri = "http://localhost:%s/api/genre/1/upVote".formatted(port);
         ResponseEntity<ResponseDto> exchange = restTemplate.exchange(uri, HttpMethod.PUT, HttpEntity.EMPTY, ResponseDto.class);
         assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
