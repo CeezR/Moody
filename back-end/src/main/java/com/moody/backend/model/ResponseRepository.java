@@ -42,4 +42,10 @@ public class ResponseRepository {
         genre.setUpVotes(genre.getUpVotes() + 1);
         return genreRepository.save(genre);
     }
+
+    public Genre downVoteGenre(Long id) {
+        Genre genre = genreRepository.findById(id).orElse(null);
+        genre.setUpVotes(genre.getUpVotes() - 1);
+        return genreRepository.save(genre);
+    }
 }
