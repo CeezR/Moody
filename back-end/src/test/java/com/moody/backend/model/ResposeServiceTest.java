@@ -23,4 +23,12 @@ class ResposeServiceTest {
         assertThat(dto.genre_message()).isEqualTo("Suns out! Time for some pop to brighten your day even more.");
     }
 
+    @Test
+    void shouldGetCurrentWeather() {
+        WeatherResponse response = resposeService.getWeather();
+        CurrentWeather currentWeather = response.current_weather();
+        assertThat(currentWeather).isNotNull();
+        assertThat(currentWeather.weathercode()).isNotNull();
+    }
+
 }
