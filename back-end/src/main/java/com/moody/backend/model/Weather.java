@@ -10,17 +10,17 @@ public class Weather {
     private Long id;
 
     @Column(name = "weather_code", nullable = false)
-    private int code;
+    private int weatherCode;
 
     @Column(name = "weather_description", nullable = false)
     private String description;
 
-    public int getCode() {
-        return code;
+    public int getWeatherCode() {
+        return weatherCode;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setWeatherCode(int weatherCode) {
+        this.weatherCode = weatherCode;
     }
 
     public String getDescription() {

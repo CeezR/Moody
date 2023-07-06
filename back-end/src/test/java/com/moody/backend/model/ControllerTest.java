@@ -1,4 +1,4 @@
-package com.moody.backend;
+package com.moody.backend.model;
 
 import com.moody.backend.model.ResponseDto;
 import org.junit.jupiter.api.Test;

@@ -13,4 +13,8 @@ public class ResponseRepository {
         this.genreRepository = genreRepository;
         this.weatherRepository = weatherRepository;
     }
+
+    public Weather getWeatherByCode(int code) {
+        return weatherRepository.findByWeatherCode(code);
+    }
 }
