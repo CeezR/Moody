@@ -29,11 +29,11 @@ public class ResponseRepository {
         return StreamSupport.stream(weatherRepository.findAll().spliterator(), false).toList();
     }
 
-    public List<Weather> getGenreList() {
-        return null;
+    public List<Genre> getGenreList() {
+        return StreamSupport.stream(genreRepository.findAll().spliterator(), false).toList();
     }
 
-    public Weather deleteGenreById(int i) {
-        return null;
+    public void deleteGenreById(Long i) {
+        genreRepository.deleteById(i);
     }
 }

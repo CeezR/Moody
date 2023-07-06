@@ -44,12 +44,12 @@ class ResponseRepositoryTest {
 
     @Test
     void shouldDeleteGenre() {
-        List<Weather> genreList = repo.getGenreList();
+        List<Genre> genreList = repo.getGenreList();
         assertThat(genreList).isNotNull();
 
-        Weather weather = repo.deleteGenreById(1);
+        repo.deleteGenreById(1L);
 
-        List<Weather> genreList2 = repo.getGenreList();
+        List<Genre> genreList2 = repo.getGenreList();
         assertThat(genreList2).isNotNull();
         assertThat(genreList2.size()).isEqualTo(genreList.size() - 1);
     }
