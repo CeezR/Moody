@@ -32,7 +32,7 @@ const Bord = () => {
   return (
     <>
       <SearchForm/>
-      <MoodyCard weatherDescription={moody?.genreName} genreName={moody?.genreName} genre_message={moody?.genre_message}/>
+      <MoodyCard weatherDescription={moody?.weatherDescription} genreName={moody?.genreName} genre_message={moody?.genre_message}/>
     </>
   )
 }

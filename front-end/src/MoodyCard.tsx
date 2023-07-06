@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './MoodyCard.css'
 
 type MoodyCardProps = {
   weatherDescription: string | undefined;
@@ -9,11 +9,20 @@ type MoodyCardProps = {
 
 const MoodyCard = ({weatherDescription, genre_message, genreName} : MoodyCardProps) => {
   return (
-    <div>
-      <p>Weather : {weatherDescription}</p>
-      <p>Genere: {genreName}</p>
-      <p>Message: {genre_message}</p>
-    </div>
+    <>
+      <div className="flip-card">
+        <div className="flip-card-inner">
+          <div className="flip-card-front">
+            {/* <img src="img_avatar.png" alt="Avatar"/> */}
+            <h2>{weatherDescription}</h2>
+          </div>
+          <div className="flip-card-back">
+            <h2>{genreName}</h2>
+            <p>{genre_message}</p>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
