@@ -61,8 +61,12 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
   }
 
   useEffect(() => {
-    setUpVotes(genre_upvotes);
-  }, [genre_upvotes]);
+    if(genre_upvotes !== undefined) {
+      setUpVotes(genre_upvotes);
+    } else {
+      setUpVotes(0);
+    }
+  }, [genre_upvotes, id]);
 
 
   return (
@@ -77,9 +81,9 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
             <h2>{genreName}</h2>
             <p>{genre_message}</p>
             <div className="d-flex mt-auto gap-1">
-              <button onClick={handleUpvote} className='btn btn-secondary flex-grow-1'>UpVote</button>
-              <p className='flex-grow-1 fs-2 m-0'>{upVotes}</p>
               <button onClick={handleDownvote} className='btn btn-secondary flex-grow-1'>DownVote</button>
+              <p className='flex-grow-1 fs-2 m-0'>{upVotes}</p>
+              <button onClick={handleUpvote} className='btn btn-secondary flex-grow-1'>UpVote</button>
               </div>
               <button onClick={handleDelete} className='btn btn-danger'>Delete</button>
           </div>

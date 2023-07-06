@@ -16,10 +16,12 @@ const SearchForm = ({setMoody} : SearchFormProps) => {
   
   const fetchMoody = async (latitude : string, longitude : string) => {
     try {
+      console.log(`http://localhost:8080/api?longitude=${longitude}&latitude=${latitude}`)
       const response = await fetch(`http://localhost:8080/api?longitude=${longitude}&latitude=${latitude}`)
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+      console.log(response);
       const data:moodyData = await response.json();
       setMoody(data);
       
