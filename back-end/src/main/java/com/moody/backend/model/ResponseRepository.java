@@ -26,6 +26,6 @@ public class ResponseRepository {
     }
 
     public List<Weather> getWeatherList() {
-        return null;
+        return StreamSupport.stream(weatherRepository.findAll().spliterator(), false).toList();
     }
 }
