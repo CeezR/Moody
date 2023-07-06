@@ -29,6 +29,26 @@ public class ControllerTest {
         assertThat(exchange.getBody().genre_message()).isNotNull();
         assertThat(exchange.getBody().genre_upvotes()).isNotNull();
         assertThat(exchange.getBody().id()).isNotNull();
+    }
 
+    @Test
+    void shouldUpVoteGenere(){
+        String uri = "http://localhost:%s/api/genre/upVote".formatted(port);
+        ResponseEntity<ResponseDto> exchange = restTemplate.exchange(uri, HttpMethod.PUT, HttpEntity.EMPTY, ResponseDto.class);
+        assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    void shouldDownVoteGenere(){
+        String uri = "http://localhost:%s/api/genre/1/upVote".formatted(port);
+        ResponseEntity<ResponseDto> exchange = restTemplate.exchange(uri, HttpMethod.PUT, HttpEntity.EMPTY, ResponseDto.class);
+        assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    void shouldDeleteGenere(){
+        String uri = "http://localhost:%s/api/genre/1".formatted(port);
+        ResponseEntity<ResponseDto> exchange = restTemplate.exchange(uri, HttpMethod.DELETE, HttpEntity.EMPTY, ResponseDto.class);
+        assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 }
