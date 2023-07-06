@@ -1,6 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const SearchForm = () => {
+type moodyData = {
+  weatherDescription: string;
+  genreName: string;
+  genre_message: string;
+}
+
+type SearchFormProps = {
+  setMoody : React.Dispatch<React.SetStateAction<moodyData | undefined>>
+}
+
+const SearchForm = ({setMoody} : SearchFormProps) => {
+  
+  const fetchMoody = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api")
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data:moodyData = await response.json();
+      setMoody(data);
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   const handleSubmit = async () => {
     // event.preventDefault();
     // try {
@@ -20,6 +45,10 @@ const SearchForm = () => {
     //   console.error('Fetch failed:', error);
     // } 
   };
+
+  useEffect(() => {
+    fetchMoody();
+  }, [])
 
   return (
     <form onSubmit={handleSubmit} id='addDeveloperForm'>

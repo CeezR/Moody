@@ -10,28 +10,10 @@ type moodyData = {
 
 const Bord = () => {
   const [moody, setMoody] = useState<moodyData>();
-  const testFetch = async () => {
-
-    // try {
-    //   const response = await fetch("http://localhost:8080/api")
-    //   if (!response.ok) {
-    //     throw new Error('Network response was not ok');
-    //   }
-    //   const data:moodyData = await response.json();
-    //   setMoody(data);
-      
-    // } catch (error) {
-    //   console.error('Error:', error);
-    // }
-  }
-
-  useEffect(() => {
-    testFetch();
-  }, [])
 
   return (
     <main className='m-4'>
-      <SearchForm/>
+      <SearchForm setMoody={setMoody}/>
       <article className='my-3'>
       <MoodyCard weatherDescription={moody?.weatherDescription} genreName={moody?.genreName} genre_message={moody?.genre_message}/>
       </article>
