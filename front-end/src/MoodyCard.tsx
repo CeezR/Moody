@@ -11,14 +11,32 @@ type MoodyCardProps = {
 
 const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes, id} : MoodyCardProps) => {
 
-
-  const handleUpvote = () => {
-    
-
+  const handleUpvote = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/genre/${id}/upVote`, {
+        method: 'PUT'
+      })
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
 
-  const handleDownvote = () => {
-    
+  const handleDownvote = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/genre/${id}/downVote`, {
+        method: 'PUT'
+      })
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
 
   const handleDelete = () => {
@@ -38,9 +56,9 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
             <h2>{genreName}</h2>
             <p>{genre_message}</p>
             <div className="d-flex mt-auto gap-1">
-              <button  className='btn btn-secondary flex-grow-1'>UpVote</button>
+              <button onClick={handleUpvote} className='btn btn-secondary flex-grow-1'>UpVote</button>
               <p className='flex-grow-1 fs-2 m-0'>{genre_upvotes}</p>
-              <button className='btn btn-secondary flex-grow-1'>DownVote</button>
+              <button onClick={handleDownvote} className='btn btn-secondary flex-grow-1'>DownVote</button>
               </div>
               <button className='btn btn-danger'>Delete</button>
           </div>
