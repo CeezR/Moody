@@ -2,6 +2,8 @@ package com.moody.backend.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
 
 import java.util.List;
 import java.util.Random;
@@ -24,6 +26,21 @@ public class ResposeService {
     }
 
     public WeatherResponse getWeather() {
-        return null;
+        WebClient webClient = WebClient.create("https://api.open-meteo.com");
+
+        WeatherResponse response = webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/v1/forecast")
+                        .queryParam("latitude", "59.3294")
+                        .queryParam("longitude", "18.0687")
+                        .queryParam("current_weather", "true")
+                        .queryParam("timezone", "auto")
+                        .queryParam("models", "best_match")
+                        .build())
+                .retrieve()
+                .bodyToMono(WeatherResponse.class)
+                .block();
+        System.out.println(response.toString());
+        return response;
     }
 }

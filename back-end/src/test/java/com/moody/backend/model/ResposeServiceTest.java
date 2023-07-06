@@ -25,6 +25,7 @@ class ResposeServiceTest {
 
     @Test
     void shouldGetCurrentWeather() {
+        // TODO Moch the WeatherEndPoint
         WeatherResponse response = resposeService.getWeather();
         CurrentWeather currentWeather = response.current_weather();
         assertThat(currentWeather).isNotNull();
