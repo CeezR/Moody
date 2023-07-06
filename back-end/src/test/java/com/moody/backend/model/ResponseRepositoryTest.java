@@ -28,7 +28,7 @@ class ResponseRepositoryTest {
         Weather weather = repo.getWeatherByCode(code);
         assertThat(weather).isNotNull();
 
-        List<Genre> genres = repo.getGenreByWeatherId(weather.getId());
+        List<Genre> genres = repo.getGenreByWeather(weather);
         assertThat(genres).isNotNull();
         assertThat(genres.size()).isEqualTo(1);
         assertThat(genres.get(0).getName()).isEqualTo("Pop");

@@ -20,7 +20,7 @@ public class ResponseRepository {
         return weatherRepository.findByWeatherCode(code);
     }
 
-    public List<Genre> getGenreByWeatherId(Long id) {
-        return null;
+    public List<Genre> getGenreByWeather(Weather weather) {
+        return genreRepository.findByWeather(weather);
     }
 }

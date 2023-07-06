@@ -11,4 +11,8 @@ public class ResposeService {
     public ResposeService(ResponseRepository repository) {
         this.repository = repository;
     }
+
+    public ResponseDto getResponseDto(int i) {
+        return null;
+    }
 }
