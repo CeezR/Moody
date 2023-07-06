@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 
 type moodyData = {
-  weatherDescription: string;
-  genreName: string;
-  genre_message: string;
+  weatherDescription: string | undefined;
+  genreName: string | undefined;
+  genre_message: string | undefined;
+  genre_upvotes : number | undefined;
+  id : string | undefined;
 }
 
 type SearchFormProps = {
@@ -13,17 +15,17 @@ type SearchFormProps = {
 const SearchForm = ({setMoody} : SearchFormProps) => {
   
   const fetchMoody = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/api")
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data:moodyData = await response.json();
-      setMoody(data);
+    // try {
+    //   const response = await fetch("http://localhost:8080/api?longitude=59.3294&latitude=18.0687")
+    //   if (!response.ok) {
+    //     throw new Error('Network response was not ok');
+    //   }
+    //   const data:moodyData = await response.json();
+    //   setMoody(data);
       
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    // }
   }
 
   const handleSubmit = async () => {
