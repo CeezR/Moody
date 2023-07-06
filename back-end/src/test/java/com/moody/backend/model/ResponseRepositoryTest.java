@@ -18,7 +18,7 @@ class ResponseRepositoryTest {
     void shouldGetWeatherList() {
         List<Weather> weatherList = repo.getWeatherList();
         assertThat(weatherList).isNotNull();
-        assertThat(weatherList.size()).isEqualTo(5);
+        assertThat(weatherList.size()).isEqualTo(6);
     }
 
     @Test

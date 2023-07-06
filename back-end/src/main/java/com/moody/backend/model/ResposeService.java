@@ -17,8 +17,26 @@ public class ResposeService {
         this.repository = repository;
     }
 
+    public ResponseDto getResponseDto() {
+        // TODO return error if currentWeather null
+        CurrentWeather currentWeather = getWeather().current_weather();
+        int code = getWeather().current_weather().weathercode();
+        Weather weather = repository.getWeatherByCode(code);
+        if(weather == null) {
+            return null;
+        }
+
+        // TODO Fetch list not index and randomise the one to return
+        Genre genre = repository.getGenreByWeather(weather).get(0);
+        // TODO Add a DTO converter
+        return new ResponseDto(weather.getDescription(), genre.getName(), genre.getMessage());
+    }
+
     public ResponseDto getResponseDto(int i) {
         Weather weather = repository.getWeatherByCode(i);
+        if(weather == null) {
+            return null;
+        }
 
         // TODO Fetch list not index and randomise the one to return
         Genre genre = repository.getGenreByWeather(weather).get(0);

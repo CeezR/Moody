@@ -24,6 +24,14 @@ class ResposeServiceTest {
     }
 
     @Test
+    void shouldGetCorrectResponseDto() {
+
+        ResponseDto dto = resposeService.getResponseDto();
+        assertThat(dto).isNotNull();
+        assertThat(dto.weatherDescription()).isEqualTo("Sunny");
+    }
+
+    @Test
     void shouldReturnNullIfWeatherCodeIsNotFound() {
         ResponseDto dto = resposeService.getResponseDto(100);
         assertThat(dto).isNull();

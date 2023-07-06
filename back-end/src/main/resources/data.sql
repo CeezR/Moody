@@ -5,7 +5,8 @@ VALUES
     (2, 'Rainy'),
     (3, 'Partly Cloudy'),
     (4, 'Overcast'),
-    (5, 'Clear Night');
+    (5, 'Clear Night'),
+    (0, 'Sunny');
 
 -- Insert into genre
 INSERT INTO public.genre (weather_id, genre_name, genre_message)
@@ -15,5 +16,6 @@ VALUES
     (2, 'Acoustic', 'Let the acoustic tunes mingle with the sound of the rain.'),
     (3, 'Indie Rock', 'A little sun, a little shade. A bit of Indie rock to make your day.'),
     (4, 'Alternative Rock', 'Under the gray skies, rock out with some Alternative tunes.'),
-    (5, 'Jazz', 'Stars and Jazz, the perfect late-night blend.');
+    (5, 'Jazz', 'Stars and Jazz, the perfect late-night blend.'),
+    (6, 'Rock', 'Rock and Roll');
 
