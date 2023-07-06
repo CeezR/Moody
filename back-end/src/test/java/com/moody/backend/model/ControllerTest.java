@@ -21,7 +21,7 @@ public class ControllerTest {
 
     @Test
     void shouldReturnResponseDtoWithNoNulls(){
-        String uri = "http://localhost:%s/api".formatted(port);
+        String uri = "http://localhost:%s/api?longitude=59.3294&latitude=18.0687".formatted(port);
         ResponseEntity<ResponseDto> exchange = restTemplate.exchange(uri, HttpMethod.GET, HttpEntity.EMPTY, ResponseDto.class);
         assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(exchange.getBody().genreName()).isNotNull();

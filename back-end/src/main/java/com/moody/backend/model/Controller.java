@@ -4,10 +4,7 @@ import com.moody.backend.model.ResponseDto;
 import com.moody.backend.model.ResposeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -21,9 +18,11 @@ public class Controller {
     }
 
 
-    @GetMapping
-    ResponseEntity<ResponseDto> getTest() {
-        ResponseDto dto = service.getResponseDto();
+    @GetMapping()
+    ResponseEntity<ResponseDto> getTest(
+            @RequestParam("longitude") String longitude,
+            @RequestParam("latitude") String latitude) {
+        ResponseDto dto = service.getResponseDto(longitude, latitude);
         return ResponseEntity.ok().body(dto);
     }
 }

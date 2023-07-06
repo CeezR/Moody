@@ -26,7 +26,7 @@ class ResposeServiceTest {
     @Test
     void shouldGetCorrectResponseDto() {
 
-        ResponseDto dto = resposeService.getResponseDto();
+        ResponseDto dto = resposeService.getResponseDto("59.3294", "18.0687");
         assertThat(dto).isNotNull();
         assertThat(dto.weatherDescription()).isEqualTo("Sunny");
     }
@@ -40,7 +40,7 @@ class ResposeServiceTest {
     @Test
     void shouldGetCurrentWeather() {
         // TODO Moch the WeatherEndPoint
-        WeatherResponse response = resposeService.getWeather();
+        WeatherResponse response = resposeService.getWeather("59.3294", "18.0687");
         CurrentWeather currentWeather = response.current_weather();
         assertThat(currentWeather).isNotNull();
         assertThat(currentWeather.weathercode()).isNotNull();

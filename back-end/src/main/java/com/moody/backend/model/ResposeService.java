@@ -17,10 +17,10 @@ public class ResposeService {
         this.repository = repository;
     }
 
-    public ResponseDto getResponseDto() {
+    public ResponseDto getResponseDto(String latitude, String longitude) {
         // TODO return error if currentWeather null
-        CurrentWeather currentWeather = getWeather().current_weather();
-        int code = getWeather().current_weather().weathercode();
+        CurrentWeather currentWeather = getWeather(latitude, longitude).current_weather();
+        int code = currentWeather.weathercode();
         Weather weather = repository.getWeatherByCode(code);
         if(weather == null) {
             return null;
@@ -44,14 +44,14 @@ public class ResposeService {
         return new ResponseDto(weather.getDescription(), genre.getName(), genre.getMessage());
     }
 
-    public WeatherResponse getWeather() {
+    public WeatherResponse getWeather(String latitude, String longitude) {
         WebClient webClient = WebClient.create("https://api.open-meteo.com");
 
         WeatherResponse response = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/v1/forecast")
-                        .queryParam("latitude", "59.3294")
-                        .queryParam("longitude", "18.0687")
+                        .queryParam("latitude", latitude)
+                        .queryParam("longitude", longitude)
                         .queryParam("current_weather", "true")
                         .queryParam("timezone", "auto")
                         .queryParam("models", "best_match")
