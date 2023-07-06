@@ -36,4 +36,10 @@ public class ResponseRepository {
     public void deleteGenreById(Long i) {
         genreRepository.deleteById(i);
     }
+
+    public Genre upVoteGenre(Long id) {
+        Genre genre = genreRepository.findById(id).orElse(null);
+        genre.setUpVotes(genre.getUpVotes() + 1);
+        return genreRepository.save(genre);
+    }
 }

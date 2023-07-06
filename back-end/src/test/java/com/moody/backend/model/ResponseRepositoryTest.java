@@ -54,6 +54,12 @@ class ResponseRepositoryTest {
         assertThat(genreList2.size()).isEqualTo(genreList.size() - 1);
     }
 
-
+    @Test
+    void shouldUpvoteGenre() {
+        Weather weather = repo.getWeatherByCode(1);
+        Genre genre = repo.getGenreByWeather(weather).get(0);
+        Genre genre2 = repo.upVoteGenre(genre.getId());
+        assertThat(genre.getUpVotes() + 1).isEqualTo(genre2.getUpVotes());
+    }
 
 }
