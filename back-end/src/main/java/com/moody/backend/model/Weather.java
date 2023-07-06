@@ -1,4 +1,4 @@
-package com.moody.backend;
+package com.moody.backend.model;
 
 import jakarta.persistence.*;
 

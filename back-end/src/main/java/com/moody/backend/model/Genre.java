@@ -1,8 +1,7 @@
-package com.moody.backend;
+package com.moody.backend.model;
 
+import com.moody.backend.model.Weather;
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Genre {
