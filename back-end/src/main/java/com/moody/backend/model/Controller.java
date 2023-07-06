@@ -23,7 +23,7 @@ public class Controller {
 
     @GetMapping
     ResponseEntity<ResponseDto> getTest() {
-
-        return ResponseEntity.ok().body(new ResponseDto(null, null, null));
+        ResponseDto dto = service.getResponseDto();
+        return ResponseEntity.ok().body(dto);
     }
 }
