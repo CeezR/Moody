@@ -15,6 +15,13 @@ class ResponseRepositoryTest {
     private ResponseRepository repo;
 
     @Test
+    void shouldGetWeatherList() {
+        List<Weather> weatherList = repo.getWeatherList();
+        assertThat(weatherList).isNotNull();
+        assertThat(weatherList.size()).isEqualTo(5);
+    }
+
+    @Test
     void shouldGetCorrectWeatherByWeatherCode() {
         int code = 1;
         Weather weather = repo.getWeatherByCode(code);

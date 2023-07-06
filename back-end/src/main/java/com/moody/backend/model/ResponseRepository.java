@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Repository
 public class ResponseRepository {
@@ -22,5 +23,9 @@ public class ResponseRepository {
 
     public List<Genre> getGenreByWeather(Weather weather) {
         return genreRepository.findByWeather(weather);
+    }
+
+    public List<Weather> getWeatherList() {
+        return null;
     }
 }
