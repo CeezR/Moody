@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './MoodyCard.css'
 
 type MoodyCardProps = {
@@ -10,6 +10,7 @@ type MoodyCardProps = {
 }
 
 const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes, id} : MoodyCardProps) => {
+  const [upVotes, setUpVotes] = useState(genre_upvotes);
 
   const handleUpvote = async () => {
     try {
@@ -18,6 +19,9 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
       })
       if (!response.ok) {
         throw new Error('Network response was not ok');
+      }
+      if(upVotes !== undefined) {
+        setUpVotes(upVotes + 1)
       }
       
     } catch (error) {
@@ -33,6 +37,9 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+      if(upVotes !== undefined) {
+        setUpVotes(upVotes - 1)
+      }
       
     } catch (error) {
       console.error('Error:', error);
@@ -42,6 +49,10 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
   const handleDelete = () => {
     
   }
+
+  useEffect(() => {
+    setUpVotes(genre_upvotes);
+  }, [genre_upvotes]);
 
 
   return (
@@ -57,7 +68,7 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
             <p>{genre_message}</p>
             <div className="d-flex mt-auto gap-1">
               <button onClick={handleUpvote} className='btn btn-secondary flex-grow-1'>UpVote</button>
-              <p className='flex-grow-1 fs-2 m-0'>{genre_upvotes}</p>
+              <p className='flex-grow-1 fs-2 m-0'>{upVotes}</p>
               <button onClick={handleDownvote} className='btn btn-secondary flex-grow-1'>DownVote</button>
               </div>
               <button className='btn btn-danger'>Delete</button>
