@@ -29,7 +29,12 @@ public class ResposeService {
         // TODO Fetch list not index and randomise the one to return
         Genre genre = repository.getGenreByWeather(weather).get(0);
         // TODO Add a DTO converter
-        return new ResponseDto(weather.getDescription(), genre.getName(), genre.getMessage());
+        return new ResponseDto(
+                weather.getDescription(),
+                genre.getName(),
+                genre.getMessage(),
+                genre.getUpVotes(),
+                genre.getId());
     }
 
     public ResponseDto getResponseDto(int i) {
@@ -41,7 +46,12 @@ public class ResposeService {
         // TODO Fetch list not index and randomise the one to return
         Genre genre = repository.getGenreByWeather(weather).get(0);
         // TODO Add a DTO converter
-        return new ResponseDto(weather.getDescription(), genre.getName(), genre.getMessage());
+        return new ResponseDto(
+                weather.getDescription(),
+                genre.getName(),
+                genre.getMessage(),
+                genre.getUpVotes(),
+                genre.getId());
     }
 
     public WeatherResponse getWeather(String latitude, String longitude) {

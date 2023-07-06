@@ -27,6 +27,8 @@ public class ControllerTest {
         assertThat(exchange.getBody().genreName()).isNotNull();
         assertThat(exchange.getBody().weatherDescription()).isNotNull();
         assertThat(exchange.getBody().genre_message()).isNotNull();
+        assertThat(exchange.getBody().genre_upvotes()).isNotNull();
+        assertThat(exchange.getBody().id()).isNotNull();
 
     }
 }
