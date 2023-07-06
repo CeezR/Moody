@@ -23,10 +23,13 @@ public class ControllerTest {
     RestTemplate restTemplate;
 
     @Test
-    void shouldCreateCartForPost(){
+    void shouldReturnResponseDtoWithNoNulls(){
         String uri = "http://localhost:%s/api".formatted(port);
-        ResponseEntity<String> exchange = restTemplate.exchange(uri, HttpMethod.GET, HttpEntity.EMPTY, String.class);
+        ResponseEntity<ResponseDto> exchange = restTemplate.exchange(uri, HttpMethod.GET, HttpEntity.EMPTY, ResponseDto.class);
         assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(exchange.getBody().genreName()).isNotNull();
+        assertThat(exchange.getBody().weatherDescription()).isNotNull();
+        assertThat(exchange.getBody().genre_message()).isNotNull();
 
     }
 }
