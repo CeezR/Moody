@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { FormEvent, useEffect } from 'react'
 
 type moodyData = {
   weatherDescription: string | undefined;
@@ -14,43 +14,27 @@ type SearchFormProps = {
 
 const SearchForm = ({setMoody} : SearchFormProps) => {
   
-  const fetchMoody = async () => {
-    // try {
-    //   const response = await fetch("http://localhost:8080/api?longitude=59.3294&latitude=18.0687")
-    //   if (!response.ok) {
-    //     throw new Error('Network response was not ok');
-    //   }
-    //   const data:moodyData = await response.json();
-    //   setMoody(data);
+  const fetchMoody = async (latitude : string, longitude : string) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api?longitude=${longitude}&latitude=${latitude}`)
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data:moodyData = await response.json();
+      setMoody(data);
       
-    // } catch (error) {
-    //   console.error('Error:', error);
-    // }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
 
-  const handleSubmit = async () => {
-    // event.preventDefault();
-    // try {
-    //   const response = await handleFetch();
-      
-    //   if (!response.ok) {
-    //     setShowErrorAlert(true);
-    //     setTimeout(() => setShowErrorAlert(false), 3000);
-    //   } else {
-    //     setShowSuccessAlert(fullName);
-    //     setTimeout(() => setShowSuccessAlert(null), 3000);
-    //     setFullName("");
-    //     setBootcamp(Object.keys(Bootcamps)[0]);
-    //     setRefetch(true);
-    //   }
-    // } catch (error) {
-    //   console.error('Fetch failed:', error);
-    // } 
-  };
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const latitude = (event.target as HTMLFormElement).elements.namedItem("latitude") as HTMLInputElement;
+    const longitude = (event.target as HTMLFormElement).elements.namedItem("longitude") as HTMLInputElement;
 
-  useEffect(() => {
-    fetchMoody();
-  }, [])
+    fetchMoody(latitude.value, longitude.value);
+  }
 
   return (
     <form onSubmit={handleSubmit} id='addDeveloperForm'>

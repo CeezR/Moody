@@ -9,10 +9,11 @@ type MoodyCardProps = {
   id : string | undefined;
 }
 
-const MoodyCard = ({weatherDescription, genre_message, genreName} : MoodyCardProps) => {
+const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes, id} : MoodyCardProps) => {
 
 
   const handleUpvote = () => {
+    
 
   }
 
@@ -34,11 +35,11 @@ const MoodyCard = ({weatherDescription, genre_message, genreName} : MoodyCardPro
             <h2>{weatherDescription}</h2>
           </div>
           <div className="flip-card-back d-flex flex-column p-3 gap-1">
-            <h2>Pop</h2>
-            <p>Suns out! Time for some pop to brighten your day even more.</p>
+            <h2>{genreName}</h2>
+            <p>{genre_message}</p>
             <div className="d-flex mt-auto gap-1">
               <button  className='btn btn-secondary flex-grow-1'>UpVote</button>
-              <p className='flex-grow-1 fs-2 m-0'>0</p>
+              <p className='flex-grow-1 fs-2 m-0'>{genre_upvotes}</p>
               <button className='btn btn-secondary flex-grow-1'>DownVote</button>
               </div>
               <button className='btn btn-danger'>Delete</button>
