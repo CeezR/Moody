@@ -19,6 +19,7 @@ public class ResposeService {
 
     public ResponseDto getResponseDto(int i) {
         Weather weather = repository.getWeatherByCode(i);
+
         // TODO Fetch list not index and randomise the one to return
         Genre genre = repository.getGenreByWeather(weather).get(0);
         // TODO Add a DTO converter

@@ -24,6 +24,12 @@ class ResposeServiceTest {
     }
 
     @Test
+    void shouldReturnNullIfWeatherCodeIsNotFound() {
+        ResponseDto dto = resposeService.getResponseDto(100);
+        assertThat(dto).isNull();
+    }
+
+    @Test
     void shouldGetCurrentWeather() {
         // TODO Moch the WeatherEndPoint
         WeatherResponse response = resposeService.getWeather();
