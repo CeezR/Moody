@@ -11,7 +11,7 @@ Follow these steps to get the application up and running in your local environme
 | ---------------------------------| ------------------------- | ------------------------- |
 | 2. Navigate into repo            | `cd front-end`            | `cd back-end`             |
 | 3. Install Dependencies          | `npm install`             | `mvn install`             |
-| 4. Run the project               | `npm run dev`             | `mvn spring-boot:run`     |
+| 4. Run the project               | `npm run dev`             | `mvn start`               |
 
 ## 🎯 Usage
 To have a mood-based musical experience, just follow these steps:
