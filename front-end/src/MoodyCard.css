@@ -7,6 +7,19 @@
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
+.flip-card-front {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.flip-card-front-title {
+  background-color: #f1f1f131;
+  border-radius: 5px;
+}
+
 /* This container is needed to position the front and back side */
 .flip-card-inner {
   position: relative;
@@ -29,6 +42,14 @@
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.flip-card-back-text {
+  background-color: #00000031;
+  border-radius: 5px;
 }
 
 /* Style the front side (fallback if image is missing) */
@@ -39,7 +60,6 @@
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
 }
