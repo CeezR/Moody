@@ -76,7 +76,7 @@ const MoodyCard = ({weatherDescription, genre_message, genreName, genre_upvotes,
 
   return (
     <>
-      <div className="flip-card">
+      <div className="flip-card m-auto">
         <div className="flip-card-inner">
           <div className="flip-card-front" style={{ backgroundImage: `url('${weatherImgUrl}')` }}>
             {/* {weatherImgUrl && <img className="flip-card-front-img" src={weatherImgUrl} alt="Avatar"/>} */}
